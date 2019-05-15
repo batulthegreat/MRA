@@ -1,0 +1,54 @@
+# ===================================================================
+# Spring Boot configuration.
+#
+# This configuration will be overriden by the Spring profile you use,
+# for example application-dev.yml if you use the "dev" profile.
+# ===================================================================
+
+# ===================================================================
+# Standard Spring Boot properties.
+# Full reference is available at:
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ===================================================================
+
+# ===================================================================
+# Server
+# ===================================================================
+server:
+  port: 7000
+  context-path: /v2
+
+# ===================================================================
+# Logging
+# ===================================================================
+logging:
+  level:
+    root: warn
+    com.hcl.test.hacker: debug
+
+# ===================================================================
+# springfox
+# ===================================================================
+springfox:
+  documentation:
+    swagger:
+      v2.path: /api-docs
+
+spring:
+  jackson:
+    date-format: com.hcl.test.hacker.api.config.format.RFC3339DateFormat
+    serialization:
+      write-dates-as-timestamps: false
+
+
+ 
+# ===================================================================
+# security
+# ===================================================================
+security:
+  user:
+    name: user
+    password: adcuser
+
+
+

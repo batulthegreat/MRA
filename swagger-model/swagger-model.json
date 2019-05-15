@@ -1,0 +1,378 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Room Availbility Service contract. This component exposes services to search for availability of Meeting Rooms",
+    "version": "1.0.1",
+    "title": "Meeting Room Availability",
+    "contact": {
+      "email": "somyajyoti.banerjee@hcl.com"
+    }
+  },
+  "host": "myapi.hcl.com",
+  "basePath": "/core/location/v1",
+  "securityDefinitions": {
+    "apiKey": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "apiKey"
+    }
+  },
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/mra/search": {
+      "get": {
+        "tags": [
+          "Room"
+        ],
+        "summary": "Meeting room search",
+        "description": "Searches for meeting room availability based on date-timeslot, capacity, amenities & facility",
+        "operationId": "doSearch",
+        "produces": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "MeetingDate",
+            "required": true,
+            "type": "number",
+            "description": "Date of the meeting"
+          },
+          {
+            "in": "query",
+            "name": "StartTime",
+            "type": "number",
+            "description": "Start time of meeting"
+          },
+          {
+            "in": "query",
+            "name": "EndTime",
+            "type": "number",
+            "description": "End time of meeting"
+          },
+          {
+            "in": "query",
+            "name": "Capacity",
+            "type": "integer",
+            "description": "Seating capacity of the room"
+          },
+          {
+            "in": "query",
+            "name": "Amenities",
+            "type": "array",
+            "description": "List of amenities by amenities Id",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "LocationId",
+            "type": "string",
+            "description": "Location of the meeting"
+          },
+          {
+            "in": "query",
+            "name": "Building",
+            "type": "string",
+            "description": "Specific building for the room"
+          },
+          {
+            "in": "query",
+            "name": "Floor",
+            "type": "string",
+            "description": "Specific Floor for the room"
+          },
+          {
+            "in": "header",
+            "name": "Call-Id",
+            "type": "string",
+            "description": "Unique identifier from the service consumer"
+          },
+          {
+            "in": "header",
+            "name": "Channel",
+            "type": "string",
+            "description": "B2B/UI Channel"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "search results matching criteria",
+            "schema": {
+              "$ref": "#/definitions/Suggestions"
+            }
+          },
+          "400": {
+            "description": "Parameter do not match the expected format.",
+            "schema": {
+              "$ref": "#/definitions/ErrorList"
+            }
+          },
+          "500": {
+            "description": "Error Occurred.",
+            "schema": {
+              "$ref": "#/definitions/ErrorList"
+            }
+          }
+        }
+      }
+    },
+    "/mra/getAllAmenities": {
+      "get": {
+        "tags": [
+          "Amenities"
+        ],
+        "summary": "Get list of all amenities",
+        "description": "Gets the full list of amenities to select from",
+        "operationId": "doGetAllAmenities",
+        "produces": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Call-Id",
+            "type": "string",
+            "description": "Unique identifier from the service consumer"
+          },
+          {
+            "in": "header",
+            "name": "Channel",
+            "type": "string",
+            "description": "B2B/UI Channel"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success validation response message",
+            "schema": {
+              "$ref": "#/definitions/AllAmenities"
+            }
+          },
+          "400": {
+            "description": "Parameter do not match the expected format.",
+            "schema": {
+              "$ref": "#/definitions/ErrorList"
+            }
+          },
+          "500": {
+            "description": "Error Occurred.",
+            "schema": {
+              "$ref": "#/definitions/ErrorList"
+            }
+          }
+        }
+      }
+    },
+    "/mra/getAllLocations": {
+      "get": {
+        "tags": [
+          "Locations"
+        ],
+        "summary": "Get full list of all Locations",
+        "description": "Gets a list of all Locations to select from",
+        "operationId": "doGetAllLocations",
+        "produces": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Call-Id",
+            "type": "string",
+            "description": "Unique identifier from the service consumer"
+          },
+          {
+            "in": "header",
+            "name": "Channel",
+            "type": "string",
+            "description": "B2B/UI Channel"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success validation response message",
+            "schema": {
+              "$ref": "#/definitions/AllLocations"
+            }
+          },
+          "400": {
+            "description": "Parameter do not match the expected format.",
+            "schema": {
+              "$ref": "#/definitions/ErrorList"
+            }
+          },
+          "500": {
+            "description": "Error Occurred.",
+            "schema": {
+              "$ref": "#/definitions/ErrorList"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Suggestions": {
+      "type": "object",
+      "properties": {
+        "Rooms": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MeetingRoom"
+          }
+        }
+      }
+    },
+    "MeetingRoom": {
+      "type": "object",
+      "properties": {
+        "RoomId": {
+          "type": "string",
+          "description": "unique id of the meeting room"
+        },
+        "RoomCapacity": {
+          "type": "integer",
+          "description": "Number of participants that can be accommodated in the room"
+        },
+        "RoomName": {
+          "type": "string",
+          "description": "Name of the room"
+        },
+        "RoomDescription": {
+          "type": "string",
+          "description": "Description of the room"
+        },
+        "RoomAmenities": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "RoomLocation": {
+          "type": "object",
+          "properties": {
+            "LocationId": {
+              "type": "string"
+            },
+            "Building": {
+              "type": "string"
+            },
+            "Floor": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "AllLocations": {
+      "type": "object",
+      "properties": {
+        "Locations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Location"
+          }
+        }
+      }
+    },
+    "Location": {
+      "type": "object",
+      "properties": {
+        "LocationId": {
+          "type": "string",
+          "description": "System Id of the location"
+        },
+        "LocationName": {
+          "type": "string",
+          "description": "Name of location"
+        },
+        "Buildings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "Floors": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "AllAmenities": {
+      "type": "object",
+      "properties": {
+        "Amenities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Amenity"
+          }
+        }
+      }
+    },
+    "Amenity": {
+      "type": "object",
+      "properties": {
+        "AmenityId": {
+          "type": "string",
+          "description": "System Id of the amenity"
+        },
+        "AmenityName": {
+          "type": "string",
+          "description": "Short Description/name of the amenity"
+        }
+      }
+    },
+    "ErrorList": {
+      "type": "object",
+      "properties": {
+        "ErrorList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          }
+        }
+      }
+    },
+    "Error": {
+      "type": "object",
+      "properties": {
+        "ErrorCode": {
+          "type": "string"
+        },
+        "Message": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+ 	"generator-spring-rest": {
+ 		"serviceName": "MeetingRoomAvailability",
+ 		"groupId": "com.hcl.test.hacker",
+ 		"artifactId": "meeting-room-availability",
+ 		"packaging": "war",
+ 		"springBootVersion": "1.5.3.RELEASE",
+ 		"basePackageStructure": "com.hcl.test.hacker",
+ 		"mavenProfiles": [
+ 			"dev",
+ 			"test",
+ 			"qa",
+ 			"prod"
+ 		],
+ 		"enableEureka": false,
+ 		"enableDropwizardMetrics": false,
+ 		"enableSpringSecurity": true,
+ 		"enableSpringCloudConfig": false,
+ 		"enableELK": true,
+ 		"deploymentOptions": [
+ 			"spring-boot",
+ 			"docker"
+ 		],
+ 		"applicationPort": "7000"
+ 	}
+ }

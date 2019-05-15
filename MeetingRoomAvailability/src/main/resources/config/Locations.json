@@ -1,0 +1,59 @@
+{
+	"Locations": [
+		{
+			"LocationId": "LOC-001",
+	      	"LocationName": "Salt Lake City",
+	      	"Buildings" : [{
+		      		"BldgId": "bldg-001",
+		      		"BldgName": "Sweet Candy Building", 
+		      		"Floors": [1,2,3,4,5] 
+		      	},
+		      	{
+		      		"BldgId": "bldg-002",
+		      		"BldgName": "Lolipop Building", 
+		      		"Floors": [1,2,3]
+		      	}
+	      	]
+		},
+		{
+			"LocationId": "LOC-002",
+	      	"LocationName": "Bengaluru Surya Sapphire",
+	      	"Buildings" : [{
+		      		"BldgId": "bldg-003",
+		      		"BldgName": "Tower-1", 
+		      		"Floors": [1,2,3,4,5] 
+		      	},
+		      	{
+		      		"BldgId": "bldg-004",
+		      		"BldgName": "Tower-2", 
+		      		"Floors": [1,2,3,4,5] 
+		      	},
+		      	{
+		      		"BldgId": "bldg-005",
+		      		"BldgName": "Tower-3", 
+		      		"Floors": [1,2,3,4] 
+		      	},
+		      	{
+		      		"BldgId": "bldg-006",
+		      		"BldgName": "Tower-4", 
+		      		"Floors": [1,2,3] 
+		      	}
+	      	]
+		},
+		{
+			"LocationId": "LOC-003",
+	      	"LocationName": "Kolkata Unitech SEZ",
+	      	"Buildings" : [{
+		      		"BldgId": "bldg-007",
+		      		"BldgName": "Tower A-2", 
+		      		"Floors": [2,3]
+		      	},
+		      	{
+		      		"BldgId": "bldg-008",
+		      		"BldgName": "Tower A-3",
+		      		"Floors": [3,4] 
+		      	}
+	      	]
+		}
+	]
+}

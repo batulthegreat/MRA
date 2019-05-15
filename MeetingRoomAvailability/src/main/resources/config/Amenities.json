@@ -1,0 +1,48 @@
+{
+	"Amenities": [
+		{
+			"AmenityId": "AM-001",
+	      	"AmenityName": "AppleTV"
+		},
+		{
+			"AmenityId": "AM-002",
+	      	"AmenityName": "Video Conferencing"
+		},
+		{
+			"AmenityId": "AM-003",
+	      	"AmenityName": "Cisco VoIP phone"
+		},
+		{
+			"AmenityId": "AM-004",
+	      	"AmenityName": "in-seat microphone"
+		},
+		{
+			"AmenityId": "AM-005",
+	      	"AmenityName": "Television"
+		},
+		{
+			"AmenityId": "AM-006",
+	      	"AmenityName": "Whiteboard/Marker"
+		},
+		{
+			"AmenityId": "AM-007",
+	      	"AmenityName": "Snacks & Beverages"
+		},
+		{
+			"AmenityId": "AM-008",
+	      	"AmenityName": "Overhead Projector & Screen"
+		},
+		{
+			"AmenityId": "AM-009",
+	      	"AmenityName": "Projector Screen"
+		},
+		{
+			"AmenityId": "AM-010",
+	      	"AmenityName": "AppleTV"
+		},
+		{
+			"AmenityId": "AM-001",
+	      	"AmenityName": "AppleTV"
+		}
+	]
+}
